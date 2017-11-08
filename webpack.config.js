@@ -31,7 +31,6 @@ module.exports = {
   module: {
     rules: [
       // Transpile .js and .jsx files with Babel
-      // Exclude node_modules directory
       // Babel configuration is located in ./babelrc
       {
         test: /\.(js|jsx)$/,
@@ -51,8 +50,8 @@ module.exports = {
         }),
       },
 
-      // File loader for image assets
-      // We'll add only image extensions, but you can things like svgs, fonts and videos
+      // File Loader handles loading image assets
+      // Other file types can be included as needed
       {
         test: /\.(png|jpg|gif)$/,
         use: [
