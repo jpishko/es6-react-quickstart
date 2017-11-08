@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "build-dev": "node_modules\\.bin\\webpack",
-    "build-prod": "TODO",
     "dev": "webpack-dev-server --open"
   },
   "author": "",
