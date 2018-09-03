@@ -2,13 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 const paths = {
-    OUTPUT: path.resolve(__dirname, 'wwwroot'),
-    ENTRY: path.resolve(__dirname, 'ClientApp/js')
+    OUTPUT: path.resolve(__dirname, 'dist'),
+    ENTRY: path.resolve(__dirname, 'src/js/index.js')
 };
 
 module.exports = {
     entry: {
-        app: paths.ENTRY // points to app's entry point which is ./ClientApp/js/index.js
+        app: paths.ENTRY // points to app's entry point which is ./src/js/index.js
     },
 
     devtool: 'inline-source-map',
