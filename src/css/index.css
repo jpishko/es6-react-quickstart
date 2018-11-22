@@ -1,0 +1,52 @@
+html, body, #root {
+    height: 100%;
+}
+
+
+/* App component */
+.App {
+    height: 100%;
+    background-color: #EEEEEE;
+}
+.topNavbar {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background-color: #3F51B5;
+}
+.bottomContainer {
+    position: absolute;
+    padding-top: 50px;
+    display: flex;
+    height: 100%;
+}
+main {
+    flex-grow: 1;
+    align-items: stretch;
+}
+
+
+/* Logo component */
+.logo {
+    height: 100px;
+    width: 100%;
+}
+
+
+/* Sidebar component */
+.sidebar {
+    flex-basis: 250px;
+    background-color: white;
+    box-shadow: 5px 0 5px -2px #DDDDDD;
+    margin-right: 5px;
+}
+.sidebar ul {
+    list-style-type: none;
+}
+.sidebar li a {
+    display: inline-block;
+    width: 100%;
+    line-height: 35px;
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+}
