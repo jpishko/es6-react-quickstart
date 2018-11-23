@@ -1,8 +1,49 @@
 import React from 'react';
 import {Route, NavLink, BrowserRouter} from 'react-router-dom';
+import styled from 'styled-components';
 import Dashboard from './screens/Dashboard.jsx';
 import Screen1 from './screens/Screen1.jsx';
-//import { Button } from 'reactstrap';
+
+const StyledDivAppContainer = styled.div`
+  height: 100;
+  background-color: #EEEEEE;
+`
+const StyledDivTopNavBar = styled.div`
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background-color: #3F51B5;
+`
+const StyledDivLogo = styled.div`
+  height: 100px;
+  width: 100%;
+`
+const StyledDivBottomContainer = styled.div`
+  position: absolute;
+  padding-top: 50px;
+  display: flex;
+  height: 100%;
+`
+const StyledMain = styled.main`
+  flex-grow: 1;
+  align-items: stretch;
+`
+const StyledDivSideBar = styled.div`
+  flex-basis: 250px;
+  background-color: white;
+  box-shadow: 5px 0 5px -2px #DDDDDD;
+  margin-right: 5px;
+`
+const StyledUl = styled.ul`
+  list-style-type: none;
+`
+const StyledNavLink = styled(NavLink)`
+  display: inline-block;
+  width: 100%;
+  line-height: 35px;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+`
 
 export default class App extends React.Component {
   constructor() {
@@ -12,31 +53,31 @@ export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <StyledDivAppContainer>
 
-          <div className="topNavbar">
-            <div className="logo">
+          <StyledDivTopNavBar>
+            <StyledDivLogo>
                 LOGO
-            </div>
-          </div>
+            </StyledDivLogo>
+          </StyledDivTopNavBar>
 
-          <div className="bottomContainer">
-            <div className="sidebar">
+          <StyledDivBottomContainer>
+            <StyledDivSideBar>
               <nav>
-                <ul>
-                  <li><NavLink to="/">Dashboard</NavLink></li>
-                  <li><NavLink to="/screen1">Screen1</NavLink></li>
-                </ul>
+                <StyledUl>
+                  <li><StyledNavLink to="/">Dashboard</StyledNavLink></li>
+                  <li><StyledNavLink to="/screen1">Screen1</StyledNavLink></li>
+                </StyledUl>
               </nav>
-            </div>
+            </StyledDivSideBar>
 
-            <main>
+            <StyledMain>
               <Route exact path="/" component={Dashboard}/>
               <Route path="/screen1" component={Screen1}/>
-            </main>
-          </div>
+            </StyledMain>
+          </StyledDivBottomContainer>
 
-        </div>
+        </StyledDivAppContainer>
       </BrowserRouter>
     );
   }
