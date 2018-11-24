@@ -60,7 +60,6 @@ export default class App extends React.Component {
   }
 
   setActiveLink(event) {
-    event.preventDefault();
     let currentActiveLink = document.querySelector(`a[data-name="${this.state.activeLink}"]`);
     currentActiveLink.style.backgroundColor = "";
     let newActiveLinkName = event.target.attributes["data-name"].value;
