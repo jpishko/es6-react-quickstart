@@ -5,7 +5,7 @@ import Dashboard from './screens/Dashboard.jsx';
 import Screen1 from './screens/Screen1.jsx';
 
 const StyledDivAppContainer = styled.div`
-  height: 100;
+  height: 100%;
   background-color: #EEEEEE;
 `
 const StyledDivTopNavBar = styled.div`
@@ -15,21 +15,23 @@ const StyledDivTopNavBar = styled.div`
   background-color: #3F51B5;
 `
 const StyledDivLogo = styled.div`
-  height: 100px;
-  width: 100%;
+  width: 250px;
+  height: 50px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
 `
 const StyledDivBottomContainer = styled.div`
-  position: absolute;
   padding-top: 50px;
   display: flex;
   height: 100%;
 `
 const StyledMain = styled.main`
-  flex-grow: 1;
-  align-items: stretch;
+  flex: 1, 1, auto; /* growth factor 1, shrink factor 1, auto calculate width */
 `
 const StyledDivSideBar = styled.div`
-  flex-basis: 250px;
+  flex: 0 0 250px; /* don't grow, don't shrink, stay fixed at 250px */
   background-color: white;
   box-shadow: 5px 0 5px -2px #DDDDDD;
   margin-right: 5px;
@@ -43,11 +45,28 @@ const StyledNavLink = styled(NavLink)`
   line-height: 35px;
   padding: 5px 15px 5px 15px;
   text-decoration: none;
+  &:hover {
+    background-color: #EEEEEE;
+  }
 `
 
 export default class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      activeLink: "dashboard"
+    };
+    this.setActiveLink = this.setActiveLink.bind(this);
+  }
+
+  setActiveLink(event) {
+    event.preventDefault();
+    let currentActiveLink = document.querySelector(`a[data-name="${this.state.activeLink}"]`);
+    currentActiveLink.style.backgroundColor = "";
+    let newActiveLinkName = event.target.attributes["data-name"].value;
+    let newActiveLink = document.querySelector(`a[data-name="${newActiveLinkName}"]`);
+    newActiveLink.style.backgroundColor = "#EEEEEE";
+    this.setState({activeLink: newActiveLinkName});
   }
 
   render() {
@@ -65,8 +84,8 @@ export default class App extends React.Component {
             <StyledDivSideBar>
               <nav>
                 <StyledUl>
-                  <li><StyledNavLink to="/">Dashboard</StyledNavLink></li>
-                  <li><StyledNavLink to="/screen1">Screen1</StyledNavLink></li>
+                  <li><StyledNavLink to="/" data-name="dashboard" onClick={this.setActiveLink}>Dashboard</StyledNavLink></li>
+                  <li><StyledNavLink to="/screen1" data-name="screen1" onClick={this.setActiveLink}>Screen1</StyledNavLink></li>
                 </StyledUl>
               </nav>
             </StyledDivSideBar>
