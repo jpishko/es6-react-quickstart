@@ -9,6 +9,13 @@ const { Header, Content, Sider } = Layout;
 export default class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      config: null
+    };
+  }
+
+  componentDidMount() {
+    
   }
 
   render() {
