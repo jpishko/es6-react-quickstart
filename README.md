@@ -10,6 +10,7 @@ Starting point for an enterprise web application built with React using Ant Desi
 ## Dependencies
 styled-components: Allows writing CSS within tagged template literals to style components. <br />
 antd: Full featured UI design language and component library. <br />
+axios: For performing HTTP requests <br />
 <br />
 ## Dev Dependencies
 babel-plugin-import: Modular import plugin for babel. Automatically imports antd stylesheet when you import components. For usage see .babelrc. <br />
