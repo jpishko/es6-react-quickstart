@@ -1,0 +1,1 @@
+This folder contains JSON data mocking what would be coming from various API calls to your application.

@@ -1,4 +1,7 @@
 {
   "presets": ["env", "react"],
-  "plugins": ["babel-plugin-styled-components"]
+  "plugins": [
+    "babel-plugin-styled-components",
+    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+  ]
 }
