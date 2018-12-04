@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import axios from 'axios';
 import {routes} from '../../MockedData/routes';
 import {Layout, Menu} from 'antd';
 
@@ -15,7 +16,12 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    
+    axios.get('http://localhost:5000/api/config')
+      .then(res => {
+        const config = res.data;
+        this.setState({config});
+        console.log(config);
+      });
   }
 
   render() {
