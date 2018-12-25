@@ -22,6 +22,11 @@ module.exports = {
         filename: 'bundle.js'
     },
 
+    // Needed to make importing of jsx files work. See: https://stackoverflow.com/a/38778792/2167293
+    resolve: {
+        extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx']
+    },
+
     module: {
         rules: [
             // Transpile .js and .jsx files with Babel

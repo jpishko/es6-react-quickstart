@@ -9,7 +9,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/config', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+  res.send(
+    {
+      logo: 'React Quick Start',
+      siderWidth: 250 
+    });
 });
 
 app.post('/api/world', (req, res) => {
