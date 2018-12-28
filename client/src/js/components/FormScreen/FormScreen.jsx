@@ -1,6 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { Menu, Icon, Tabs, Card } from 'antd';
-import Spacer from '../Spacer/Spacer.jsx';
+import Spacer from '../Helpers/Spacer/Spacer.jsx';
 import { StyledMenuContainer, StyledMenu, StyledTabContainer, StyledCardContainer } from './FormScreenStyles.jsx';
  
 const SubMenu = Menu.SubMenu;
@@ -31,7 +32,7 @@ export default class FormScreen extends React.Component {
             theme="dark"
           >
             <Menu.Item key="back">
-              <Icon type="caret-left" />Back
+              <NavLink to=""><Icon type="caret-left" />Back</NavLink>
             </Menu.Item>
             <Menu.Item key="save">
               <Icon type="save" />Save

@@ -11,7 +11,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/api/config', (req, res) => {
   res.send(
     {
-      logo: 'React Quick Start',
+      logo: {
+        text: 'React Quick Start',
+        color: 'white'
+      },
+      theme: 'dark',
       siderWidth: 250 
     });
 });

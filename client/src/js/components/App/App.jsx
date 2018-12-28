@@ -8,22 +8,35 @@ import { StyledLayout, StyledMenu, StyledContent } from './AppStyles';
 
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
+const API = 'http://localhost:5000/api';
 
 export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      backBtnPath: '',
       config: null
     };
+    this.updateBackBtnPath = this.updateBackBtnPath.bind(this);
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/api/config')
+    axios.get(`${API}/config`)
       .then(res => {
         const config = res.data;
-        this.setState({config});
-        console.log(config);
+        this.setState({
+          config,
+          backBtnPath: '/'
+        });
       });
+  }
+
+  updateBackBtnPath(destination) {
+    let newPath = `/${destination}`;
+    if (this.state.backBtnPath !== newPath) {
+      this.setState({backBtnPath: newPath})
+      console.log("backBtnPath updated to: " + destination);
+    }
   }
 
   render() {
@@ -34,50 +47,51 @@ export default class App extends React.Component {
     }
     else {
       renderThis = (
-        <StyledLayout>
-          <Header>
-            <AppLogo 
-              color='white' 
-              text={this.state.config.logo}></AppLogo>
-          </Header>
-          <Layout>
-            <Sider 
-              width={this.state.config.siderWidth} 
-              theme="dark"
-            >
-              <StyledMenu
-                mode="inline"
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
+          <StyledLayout>
+            <Header>
+              <AppLogo 
+                color={this.state.config.logo.color}
+                text={this.state.config.logo.text}>
+              </AppLogo>
+            </Header>
+            <Layout>
+              <Sider 
+                width={this.state.config.siderWidth} 
                 theme="dark"
               >
-                <Menu.Item>
-                  <NavLink to="/dashboard">Dashboard</NavLink>
-                </Menu.Item>
-                <SubMenu key="nav1" title={<span>Screens</span>}>
-                  <Menu.Item key="2">
-                    <NavLink to="/form">Form</NavLink>
+                <StyledMenu
+                  mode="inline"
+                  defaultSelectedKeys={['home']}
+                  defaultOpenKeys={['screens']}
+                  theme="dark"
+                >
+                  <Menu.Item key="home">
+                    <NavLink to="/" onClick={() => this.updateBackBtnPath("")}>Dashboard</NavLink>
                   </Menu.Item>
-                  <Menu.Item key="3">
-                    <NavLink to="/view">View</NavLink>
-                  </Menu.Item>
-                </SubMenu>
-              </StyledMenu>
-            </Sider>
-            <Layout>
-              <StyledContent>
-              {routes.map((route, index) => (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.main}
-                />
-              ))}
-              </StyledContent>
+                  <SubMenu key="screens" title={<span>Screens</span>}>
+                    <Menu.Item>
+                      <NavLink to="/form">Form</NavLink>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <NavLink to="view" onClick={() => this.updateBackBtnPath("view")}>View</NavLink>
+                    </Menu.Item>
+                  </SubMenu>
+                </StyledMenu>
+              </Sider>
+              <Layout>
+                <StyledContent>
+                {routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.main}
+                  />
+                ))}
+                </StyledContent>
+              </Layout>
             </Layout>
-          </Layout>
-        </StyledLayout>
+          </StyledLayout>
       );
     }
     return (
