@@ -5,6 +5,7 @@ import routes from '../../routes.js';
 import { Layout, Menu } from 'antd';
 import AppLogo from '../AppLogo/AppLogo.jsx';
 import { StyledLayout, StyledMenu, StyledContent } from './AppStyles';
+import { BackBtnProvider, BackBtnConsumer } from '../../contexts/BackBtnContext';
 
 const { SubMenu } = Menu;
 const { Header, Sider } = Layout;
@@ -47,6 +48,7 @@ export default class App extends React.Component {
     }
     else {
       renderThis = (
+        <BackBtnProvider value={this.state.backBtnPath}>
           <StyledLayout>
             <Header>
               <AppLogo 
@@ -92,6 +94,7 @@ export default class App extends React.Component {
               </Layout>
             </Layout>
           </StyledLayout>
+        </BackBtnProvider>
       );
     }
     return (
