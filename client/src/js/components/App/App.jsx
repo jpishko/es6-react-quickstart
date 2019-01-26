@@ -63,7 +63,7 @@ export default class App extends React.Component {
               >
                 <StyledMenu
                   mode="inline"
-                  defaultSelectedKeys={['home']}
+                  defaultSelectedKeys={['view']}
                   defaultOpenKeys={['screens']}
                   theme="dark"
                 >
@@ -71,10 +71,10 @@ export default class App extends React.Component {
                     <NavLink to="/" onClick={() => this.updateBackBtnPath("")}>Dashboard</NavLink>
                   </Menu.Item>
                   <SubMenu key="screens" title={<span>Screens</span>}>
-                    <Menu.Item>
+                    <Menu.Item key="form">
                       <NavLink to="/form">Form</NavLink>
                     </Menu.Item>
-                    <Menu.Item>
+                    <Menu.Item key="view">
                       <NavLink to="view" onClick={() => this.updateBackBtnPath("view")}>View</NavLink>
                     </Menu.Item>
                   </SubMenu>
